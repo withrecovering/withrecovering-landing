@@ -1,0 +1,344 @@
+:root {
+  --bg: #fbfaf7;
+  --bg-alt: #f2f4ee;
+  --text: #222222;
+  --muted: #666666;
+  --line: #d9ddd3;
+  --green: #5f7f57;
+  --green-dark: #4a6843;
+  --card: #ffffff;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  --radius: 18px;
+  --max-width: 1100px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+    "Pretendard", "Noto Sans KR", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: min(calc(100% - 32px), var(--max-width));
+  margin: 0 auto;
+}
+
+.narrow {
+  max-width: 760px;
+}
+
+.hero {
+  padding: 72px 0 48px;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.site-title {
+  margin: 0 0 12px;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.site-subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.hero-buttons {
+  margin-top: 32px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: 0.2s ease;
+  border: 1px solid var(--green);
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button-primary {
+  background: var(--green);
+  color: #fff;
+}
+
+.button-primary:hover {
+  background: var(--green-dark);
+}
+
+.button-outline {
+  background: transparent;
+  color: var(--green-dark);
+}
+
+.section {
+  padding: 72px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.section-alt {
+  background: var(--bg-alt);
+}
+
+.section-title {
+  margin: 0 0 28px;
+  text-align: center;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  letter-spacing: -0.02em;
+}
+
+.section-title-left {
+  text-align: left;
+}
+
+.section-description {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 1.02rem;
+}
+
+.story-text {
+  margin: 0 0 12px;
+  text-align: center;
+  font-size: 1.04rem;
+}
+
+.brunch-card {
+  margin-top: 28px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  overflow: hidden;
+}
+
+.brunch-card-text {
+  padding: 32px;
+}
+
+.card-kicker {
+  margin: 0 0 10px;
+  color: var(--green);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.card-title {
+  margin: 0 0 8px;
+  font-size: 1.7rem;
+  line-height: 1.3;
+}
+
+.card-link-preview {
+  margin: 0 0 14px;
+  color: var(--muted);
+  word-break: break-all;
+}
+
+.card-description {
+  margin: 0 0 22px;
+}
+
+.brunch-card-image,
+.farm-image {
+  min-height: 240px;
+  background: #eef1e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-placeholder {
+  color: var(--muted);
+  font-size: 0.95rem;
+  padding: 24px;
+  text-align: center;
+}
+
+.farm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: center;
+}
+
+.farm-info {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+}
+
+.subsection-title {
+  margin: 0 0 16px;
+  font-size: 1.3rem;
+}
+
+.button-row {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.purchase-grid {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.purchase-button {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  box-shadow: var(--shadow);
+  transition: 0.2s ease;
+}
+
+.purchase-button:hover {
+  transform: translateY(-2px);
+  border-color: var(--green);
+}
+
+.channel-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.channel-item {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 20px 16px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: 0.2s ease;
+}
+
+.channel-item:hover {
+  transform: translateY(-2px);
+  border-color: var(--green);
+}
+
+.channel-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #eef1e8;
+  color: var(--green-dark);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.channel-label {
+  display: block;
+  font-size: 0.95rem;
+}
+
+.footer {
+  padding: 40px 0 60px;
+  text-align: center;
+}
+
+.footer-title {
+  margin: 0 0 8px;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.footer-text {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 900px) {
+  .brunch-card,
+  .farm-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .purchase-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .channel-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .hero {
+    padding-top: 56px;
+  }
+
+  .section {
+    padding: 56px 0;
+  }
+
+  .brunch-card-text,
+  .farm-info {
+    padding: 22px;
+  }
+
+  .purchase-grid,
+  .channel-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .button,
+  .purchase-button {
+    width: 100%;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+}
