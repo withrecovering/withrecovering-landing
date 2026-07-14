@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>함께 회복 중 withrecovering</title>
+  <meta
+    name="description"
+    content="회복과 관계, 살아가는 일상을 기록합니다. 민우의 글과 신평곶자왈농원 감귤 구매 채널을 한곳에서 만나보세요."
+  />
+  <meta property="og:title" content="함께 회복 중 withrecovering" />
+  <meta
+    property="og:description"
+    content="회복과 관계, 살아가는 일상의 기록과 제주 신평곶자왈농원의 감귤 채널을 잇는 공간입니다."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://withrecovering.com/" />
+  <meta name="theme-color" content="#f4efe5" />
+
+  <style>
+    :root {
+      --bg: #f4efe5;
+      --surface: #fffdf8;
+      --surface-soft: #f8f3e9;
+      --ink: #25251f;
+      --muted: #6c6a61;
+      --line: rgba(41, 48, 38, 0.13);
+      --green: #35563f;
+      --green-dark: #243e2d;
+      --green-soft: #dfe9df;
+      --orange: #d9782d;
+      --orange-soft: #f5dec7;
+      --shadow: 0 20px 60px rgba(50, 57, 42, 0.09);
+      --radius-xl: 32px;
+      --radius-lg: 22px;
+      --radius-md: 15px;
+      --max: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 92% 4%, rgba(217, 120, 45, 0.10), transparent 27rem),
+        radial-gradient(circle at 4% 24%, rgba(53, 86, 63, 0.08), transparent 25rem),
+        var(--bg);
+      font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", sans-serif;
+      line-height: 1.68;
+      word-break: keep-all;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :focus-visible {
+      outline: 3px solid rgba(217, 120, 45, 0.42);
+      outline-offset: 4px;
+    }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 100;
+      transform: translateY(-160%);
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: #fff;
+      background: var(--green-dark);
+      font-weight: 700;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid transparent;
+      background: rgba(244, 239, 229, 0.84);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .header-inner {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 850;
+      letter-spacing: -0.045em;
+    }
+
+    .brand-mark {
+      width: 26px;
+      height: 26px;
+      position: relative;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: var(--orange);
+      box-shadow: inset -5px -5px 0 rgba(130, 61, 15, 0.12);
+    }
+
+    .brand-mark::before {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 6px;
+      top: -3px;
+      left: 12px;
+      border-radius: 100% 0 100% 0;
+      background: var(--green);
+      transform: rotate(-18deg);
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 0.94rem;
+      font-weight: 700;
+    }
+
+    .site-nav a {
+      padding: 8px 11px;
+      border-radius: 999px;
+    }
+
+    .site-nav a:hover {
+      color: var(--green-dark);
+      background: rgba(255, 253, 248, 0.72);
+    }
+
+    .hero {
+      padding: 88px 0 82px;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(300px, 0.88fr);
+      align-items: center;
+      gap: 54px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 18px;
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--green-dark);
+      background: rgba(255, 253, 248, 0.68);
+      font-size: 0.88rem;
+      font-weight: 780;
+      letter-spacing: -0.02em;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--orange);
+    }
+
+    .hero-title {
+      margin: 0;
+      font-size: clamp(3rem, 8vw, 6.35rem);
+      line-height: 0.97;
+      letter-spacing: -0.09em;
+      font-weight: 900;
+    }
+
+    .hero-title span {
+      display: block;
+    }
+
+    .hero-title .en {
+      margin-top: 13px;
+      color: var(--green);
+      font-size: clamp(1.3rem, 3.1vw, 2.45rem);
+      line-height: 1.12;
+      letter-spacing: -0.055em;
+      font-weight: 730;
+    }
+
+    .hero-description {
+      max-width: 620px;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.08rem, 2vw, 1.26rem);
+      letter-spacing: -0.035em;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 11px;
+      margin-top: 34px;
+    }
+
+    .button {
+      min-height: 49px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-weight: 820;
+      letter-spacing: -0.03em;
+      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+
+    .button::after {
+      content: "↗";
+      font-size: 0.95em;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 34px rgba(36, 62, 45, 0.14);
+    }
+
+    .button-primary {
+      color: #fff;
+      background: var(--green-dark);
+    }
+
+    .button-secondary {
+      color: var(--green-dark);
+      border-color: var(--line);
+      background: rgba(255, 253, 248, 0.78);
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 430px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(140deg, rgba(255, 255, 255, 0.82), rgba(239, 232, 216, 0.66)),
+        var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-visual::before,
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .hero-visual::before {
+      width: 220px;
+      height: 220px;
+      right: -38px;
+      top: -42px;
+      background: var(--orange-soft);
+    }
+
+    .hero-visual::after {
+      width: 210px;
+      height: 210px;
+      left: -70px;
+      bottom: -65px;
+      background: var(--green-soft);
+    }
+
+    .visual-path {
+      position: absolute;
+      inset: 24px;
+      border: 1px dashed rgba(53, 86, 63, 0.20);
+      border-radius: 50% 45% 52% 44%;
+      transform: rotate(-7deg);
+    }
+
+    .visual-center {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      width: 160px;
+      height: 160px;
+      display: grid;
+      place-items: center;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      color: #fff;
+      background: var(--green-dark);
+      box-shadow: 0 20px 45px rgba(36, 62, 45, 0.22);
+      text-align: center;
+    }
+
+    .visual-center strong {
+      display: block;
+      font-size: 1.18rem;
+      line-height: 1.25;
+      letter-spacing: -0.045em;
+    }
+
+    .visual-center span {
+      display: block;
+      margin-top: 5px;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .visual-note {
+      position: absolute;
+      max-width: 180px;
+      padding: 13px 15px;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: rgba(255, 253, 248, 0.90);
+      box-shadow: 0 13px 30px rgba(47, 51, 40, 0.08);
+      font-size: 0.92rem;
+      font-weight: 760;
+      letter-spacing: -0.035em;
+    }
+
+    .visual-note small {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 640;
+    }
+
+    .note-one {
+      top: 62px;
+      left: 38px;
+    }
+
+    .note-two {
+      right: 28px;
+      top: 175px;
+    }
+
+    .note-three {
+      left: 64px;
+      bottom: 48px;
+    }
+
+    .section {
+      padding: 88px 0;
+    }
+
+    .section-alt {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 253, 248, 0.50);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 32px;
+      margin-bottom: 30px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(2rem, 4.6vw, 3.45rem);
+      line-height: 1.08;
+      letter-spacing: -0.07em;
+    }
+
+    .section-description {
+      max-width: 560px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+      letter-spacing: -0.03em;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .channel-card,
+    .farm-card {
+      min-height: 218px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 253, 248, 0.88);
+      box-shadow: 0 14px 36px rgba(50, 57, 42, 0.055);
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    }
+
+    .channel-card:hover,
+    .farm-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(53, 86, 63, 0.25);
+      box-shadow: 0 20px 45px rgba(50, 57, 42, 0.10);
+    }
+
+    .channel-card:first-child {
+      grid-column: span 2;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .card-icon {
+      width: 43px;
+      height: 43px;
+      flex: 0 0 43px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      color: var(--green-dark);
+      background: var(--green-soft);
+      font-size: 0.82rem;
+      font-weight: 900;
+    }
+
+    .card-title {
+      margin: 0;
+      font-size: 1.21rem;
+      line-height: 1.3;
+      letter-spacing: -0.045em;
+    }
+
+    .card-text {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+      letter-spacing: -0.028em;
+    }
+
+    .card-link {
+      margin-top: 28px;
+      color: var(--green);
+      font-size: 0.88rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .card-link::after {
+      content: "  ↗";
+    }
+
+    .topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 18px;
+    }
+
+    .topic {
+      padding: 7px 11px;
+      border-radius: 999px;
+      color: var(--green-dark);
+      background: var(--green-soft);
+      font-size: 0.82rem;
+      font-weight: 760;
+    }
+
+    .farm-intro {
+      display: grid;
+      grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+      gap: 22px;
+      margin-bottom: 22px;
+    }
+
+    .farm-story,
+    .farm-purpose {
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: var(--surface);
+      box-shadow: 0 14px 38px rgba(50, 57, 42, 0.055);
+    }
+
+    .farm-story {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      background: var(--green-dark);
+    }
+
+    .farm-story::after {
+      content: "";
+      position: absolute;
+      right: -48px;
+      bottom: -55px;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: var(--orange);
+      opacity: 0.94;
+    }
+
+    .farm-story .eyebrow {
+      position: relative;
+      z-index: 1;
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.17);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .farm-story-title {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      font-size: clamp(1.65rem, 3.6vw, 2.65rem);
+      line-height: 1.18;
+      letter-spacing: -0.065em;
+    }
+
+    .farm-story-text {
+      position: relative;
+      z-index: 1;
+      max-width: 480px;
+      margin: 18px 0 0;
+      color: rgba(255, 255, 255, 0.74);
+      letter-spacing: -0.03em;
+    }
+
+    .farm-purpose h3 {
+      margin: 0;
+      font-size: 1.35rem;
+      letter-spacing: -0.045em;
+    }
+
+    .farm-purpose p {
+      margin: 13px 0 0;
+      color: var(--muted);
+      letter-spacing: -0.03em;
+    }
+
+    .farm-purpose-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .purpose-item {
+      padding: 13px 14px;
+      border-radius: var(--radius-md);
+      background: var(--surface-soft);
+      font-size: 0.9rem;
+      font-weight: 740;
+      letter-spacing: -0.03em;
+    }
+
+    .farm-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .farm-card {
+      min-height: 198px;
+    }
+
+    .farm-card .card-icon {
+      color: #8b4819;
+      background: var(--orange-soft);
+    }
+
+    .about-box {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+      gap: 28px;
+      align-items: center;
+      padding: 36px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: rgba(255, 253, 248, 0.78);
+      box-shadow: var(--shadow);
+    }
+
+    .about-box .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+    }
+
+    .about-text {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.03rem;
+      letter-spacing: -0.03em;
+    }
+
+    .about-text + .about-text {
+      margin-top: 10px;
+    }
+
+    .footer {
+      padding: 42px 0 48px;
+      border-top: 1px solid var(--line);
+      background: rgba(255, 253, 248, 0.48);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .footer-brand {
+      margin: 0;
+      font-weight: 850;
+      letter-spacing: -0.04em;
+    }
+
+    .footer-text {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 0.89rem;
+      letter-spacing: -0.02em;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .footer-links a:hover {
+      color: var(--green-dark);
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner,
+      .farm-intro,
+      .about-box {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 58px;
+      }
+
+      .hero-visual {
+        min-height: 390px;
+      }
+
+      .card-grid,
+      .farm-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .channel-card:first-child {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 660px) {
+      .container {
+        width: min(calc(100% - 28px), var(--max));
+      }
+
+      .site-nav {
+        display: none;
+      }
+
+      .header-inner {
+        min-height: 62px;
+      }
+
+      .hero {
+        padding: 48px 0 62px;
+      }
+
+      .hero-description {
+        font-size: 1.03rem;
+      }
+
+      .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .hero-visual {
+        min-height: 360px;
+      }
+
+      .visual-center {
+        width: 135px;
+        height: 135px;
+      }
+
+      .visual-note {
+        max-width: 150px;
+        padding: 10px 12px;
+        font-size: 0.82rem;
+      }
+
+      .note-one {
+        top: 42px;
+        left: 20px;
+      }
+
+      .note-two {
+        right: 16px;
+        top: 156px;
+      }
+
+      .note-three {
+        left: 34px;
+        bottom: 37px;
+      }
+
+      .section {
+        padding: 66px 0;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-description {
+        margin-top: 12px;
+      }
+
+      .card-grid,
+      .farm-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .channel-card:first-child {
+        grid-column: span 1;
+      }
+
+      .channel-card,
+      .farm-card {
+        min-height: 184px;
+      }
+
+      .farm-story,
+      .farm-purpose,
+      .about-box {
+        padding: 24px;
+      }
+
+      .farm-purpose-list {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        display: block;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+        margin-top: 20px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">본문으로 바로가기</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="함께 회복 중 홈으로 이동">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>함께 회복 중</span>
+      </a>
+
+      <nav class="site-nav" aria-label="페이지 메뉴">
+        <a href="#records">기록</a>
+        <a href="#farm">제주 농원</a>
+        <a href="#about">소개</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="container hero-inner">
+        <div>
+          <p class="eyebrow">기록과 농원을 잇는 공간</p>
+          <h1 class="hero-title">
+            <span>함께</span>
+            <span>회복 중</span>
+            <span class="en">withrecovering</span>
+          </h1>
+          <p class="hero-description">
+            회복과 관계, 살아가는 일상을 기록합니다.<br />
+            제주 신평곶자왈농원에서 시작된 감귤과 계절의 연결도 함께 이어갑니다.
+          </p>
+
+          <div class="hero-actions" aria-label="주요 바로가기">
+            <a class="button button-primary" href="https://brunch.co.kr/@withrecovering" target="_blank" rel="noopener noreferrer">브런치에서 글 읽기</a>
+            <a class="button button-secondary" href="https://smartstore.naver.com/withrecovering" target="_blank" rel="noopener noreferrer">감귤 구매하기</a>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="기록, 회복, 제주 농원의 연결을 표현한 그래픽">
+          <div class="visual-path" aria-hidden="true"></div>
+          <div class="visual-center">
+            <div>
+              <strong>함께<br />회복 중</strong>
+              <span>WITHRECOVERING</span>
+            </div>
+          </div>
+          <div class="visual-note note-one">기록합니다<small>글과 문장</small></div>
+          <div class="visual-note note-two">이어집니다<small>관계와 일상</small></div>
+          <div class="visual-note note-three">제주에서 시작했습니다<small>농원과 감귤</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="records">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Records</p>
+            <h2 class="section-title">읽고 이어지는 곳</h2>
+          </div>
+          <p class="section-description">
+            긴 글부터 짧은 문장과 이미지까지, 채널마다 다른 호흡으로 회복과 관계의 이야기를 나눕니다.
+          </p>
+        </div>
+
+        <div class="card-grid">
+          <a class="channel-card" href="https://brunch.co.kr/@withrecovering" target="_blank" rel="noopener noreferrer">
+            <div>
+              <div class="card-top">
+                <div>
+                  <h3 class="card-title">브런치</h3>
+                  <p class="card-text">회복과 관계, 살아가는 과정에서 만난 질문을 긴 호흡의 글로 기록합니다.</p>
+                </div>
+                <span class="card-icon" aria-hidden="true">Br</span>
+              </div>
+              <div class="topics" aria-label="브런치 주요 주제">
+                <span class="topic">회복</span>
+                <span class="topic">관계</span>
+                <span class="topic">일상</span>
+                <span class="topic">성찰</span>
+              </div>
+            </div>
+            <span class="card-link">글 읽기</span>
+          </a>
+
+          <a class="channel-card" href="https://www.instagram.com/withrecovering/" target="_blank" rel="noopener noreferrer">
+            <div>
+              <div class="card-top">
+                <h3 class="card-title">인스타그램</h3>
+                <span class="card-icon" aria-hidden="true">IG</span>
+              </div>
+              <p class="card-text">카드레터와 일상의 장면, 오래 남기고 싶은 문장을 나눕니다.</p>
+            </div>
+            <span class="card-link">이미지 기록 보기</span>
+          </a>
+
+          <a class="channel-card" href="https://www.threads.com/@withrecovering" target="_blank" rel="noopener noreferrer">
+            <div>
+              <div class="card-top">
+                <h3 class="card-title">쓰레드</h3>
+                <span class="card-icon" aria-hidden="true">Th</span>
+              </div>
+              <p class="card-text">글이 되기 전의 짧은 생각과 지금의 감각을 가볍게 남깁니다.</p>
+            </div>
+            <span class="card-link">짧은 글 보기</span>
+          </a>
+
+          <a class="channel-card" href="https://www.facebook.com/withrecovering" target="_blank" rel="noopener noreferrer">
+            <div>
+              <div class="card-top">
+                <h3 class="card-title">페이스북</h3>
+                <span class="card-icon" aria-hidden="true">Fb</span>
+              </div>
+              <p class="card-text">새 글과 활동 소식을 공유하고 조금 더 긴 이야기를 이어갑니다.</p>
+            </div>
+            <span class="card-link">소식 보기</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="farm">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Jeju Farm</p>
+            <h2 class="section-title">제주에서 시작된 기록</h2>
+          </div>
+          <p class="section-description">
+            감귤과 농원에 관한 정보, 문의와 구매는 아래 네 채널에서 가장 빠르게 확인할 수 있습니다.
+          </p>
+        </div>
+
+        <div class="farm-intro">
+          <article class="farm-story">
+            <p class="eyebrow">The Beginning</p>
+            <h3 class="farm-story-title">곶자왈의 농원에서<br />감귤을 키우며 시작했습니다.</h3>
+            <p class="farm-story-text">
+              계절을 지나며 회복과 삶의 문장을 기록했던 시간이 지금의 ‘함께 회복 중’으로 이어졌습니다. 삶의 자리는 달라져도 농원과 감귤의 연결은 계속됩니다.
+            </p>
+          </article>
+
+          <article class="farm-purpose">
+            <h3>찾으시는 목적에 맞는 채널을 선택하세요.</h3>
+            <p>
+              농원 위치와 리뷰, 감귤 문의, 네이버 또는 카카오 구매까지 필요한 기능을 바로 찾을 수 있도록 나누었습니다.
+            </p>
+            <div class="farm-purpose-list" aria-label="농원 채널 기능 요약">
+              <div class="purpose-item">위치·정보·리뷰 확인</div>
+              <div class="purpose-item">감귤과 농원 문의</div>
+              <div class="purpose-item">네이버에서 구매</div>
+              <div class="purpose-item">카카오에서 구매</div>
+            </div>
+          </article>
+        </div>
+
+        <div class="farm-grid">
+          <a class="farm-card" href="https://map.naver.com/p/entry/place/2051591949" target="_blank" rel="noopener noreferrer">
+            <div>
+              <div class="card-top">
+                <h3 class="card-title">스마트플레이스</h3>
+                <span class="card-icon" aria-hidden="true">Map</span>
+              </div>
+              <p class="card-text">신평곶자왈농원의 위치, 기본 정보와 방문자 리뷰를 확인합니다.</p>
+            </div>
+            <span class="card-link">농원 정보 보기</span>
+          </a>
+
+          <a class="farm-card" href="http://pf.kakao.com/_xfcxdqX" target="_blank" rel="noopener noreferrer">
+            <div>
+              <div class="card-top">
+                <h3 class="card-title">카카오톡 채널</h3>
+                <span class="card-icon" aria-hidden="true">Ch</span>
+              </div>
+              <p class="card-text">감귤과 농원에 관해 문의하고 새로운 판매 소식을 받아봅니다.</p>
+            </div>
+            <span class="card-link">문의하기</span>
+          </a>
+
+          <a class="farm-card" href="https://smartstore.naver.com/withrecovering" target="_blank" rel="noopener noreferrer">
+            <div>
+              <div class="card-top">
+                <h3 class="card-title">스마트스토어</h3>
+                <span class="card-icon" aria-hidden="true">N</span>
+              </div>
+              <p class="card-text">네이버에서 신평곶자왈농원의 감귤과 판매 상품을 확인합니다.</p>
+            </div>
+            <span class="card-link">네이버에서 구매</span>
+          </a>
+
+          <a class="farm-card" href="https://store.kakao.com/withrecovering" target="_blank" rel="noopener noreferrer">
+            <div>
+              <div class="card-top">
+                <h3 class="card-title">톡스토어</h3>
+                <span class="card-icon" aria-hidden="true">K</span>
+              </div>
+              <p class="card-text">카카오톡에서 농원 상품을 둘러보고 편리하게 구매합니다.</p>
+            </div>
+            <span class="card-link">카카오에서 구매</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="about">
+      <div class="container">
+        <div class="about-box">
+          <div>
+            <p class="eyebrow">About</p>
+            <h2 class="section-title">함께 회복 중</h2>
+          </div>
+          <div>
+            <p class="about-text">
+              안녕하세요. 민우입니다. 이곳은 회복과 관계, 살아가는 과정에서 만난 생각과 장면을 기록하고 나누는 공간입니다.
+            </p>
+            <p class="about-text">
+              잘 정리된 결론보다 삶을 지나며 발견한 질문과 문장을 오래 남기고자 합니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-brand">함께 회복 중 withrecovering</p>
+        <p class="footer-text">회복과 관계, 살아가는 일상의 기록 · 신평곶자왈농원</p>
+      </div>
+      <div class="footer-links" aria-label="푸터 바로가기">
+        <a href="https://brunch.co.kr/@withrecovering" target="_blank" rel="noopener noreferrer">브런치</a>
+        <a href="https://www.instagram.com/withrecovering/" target="_blank" rel="noopener noreferrer">인스타그램</a>
+        <a href="http://pf.kakao.com/_xfcxdqX" target="_blank" rel="noopener noreferrer">농원 문의</a>
+        <a href="#top">맨 위로</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
