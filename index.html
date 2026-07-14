@@ -3,35 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>함께 회복 중 withrecovering | 민우의 기록과 채널</title>
+  <meta name="color-scheme" content="light" />
+  <title>함께 회복 중 withrecovering | 노동과 공동체 속 회복의 기록</title>
   <meta
     name="description"
-    content="회복과 삶의 감각을 기록하는 민우의 브런치, 인스타그램, 쓰레드, 페이스북, 농원과 구매 채널을 모아둔 랜딩페이지"
+    content="노동과 공동체 속에서 관계를 통해 회복을 배우고 연습하며 실천하는 민우의 삶과 기록을 모은 공간입니다."
   />
   <meta property="og:title" content="함께 회복 중 withrecovering" />
-  <meta property="og:description" content="회복, 삶, 감각, 계절의 기록. 민우의 글과 소식을 한곳에 모았습니다." />
+  <meta
+    property="og:description"
+    content="노동과 공동체 속에서 관계를 통해 회복을 배우고 연습하며 실천하는 삶을 기록합니다."
+  />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://withrecovering.com/" />
-  <meta name="theme-color" content="#efe7d8" />
-  <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="shortcut icon" href="favicon.png" />
+  <meta name="theme-color" content="#f2eee5" />
+
   <style>
     :root {
-      --bg: #f7f2ea;
-      --bg-soft: #fffaf3;
-      --paper: rgba(255, 252, 246, 0.86);
+      --bg: #f5f1e9;
+      --bg-deep: #ebe4d8;
+      --paper: rgba(255, 253, 248, 0.84);
       --paper-solid: #fffdf8;
-      --ink: #27231d;
-      --muted: #70685e;
-      --line: rgba(87, 75, 60, 0.16);
-      --accent: #806b47;
-      --accent-deep: #4f4029;
-      --accent-soft: #e8dbc6;
-      --shadow: 0 24px 70px rgba(77, 61, 38, 0.12);
+      --ink: #252821;
+      --muted: #6d7068;
+      --line: rgba(54, 63, 52, 0.14);
+      --green: #445b46;
+      --green-deep: #2f4032;
+      --green-soft: #dfe8dd;
+      --olive: #8a8f68;
+      --sand: #c9af83;
+      --clay: #9d7359;
+      --shadow: 0 24px 80px rgba(45, 51, 42, 0.11);
+      --shadow-soft: 0 14px 44px rgba(45, 51, 42, 0.08);
       --radius-xl: 34px;
       --radius-lg: 24px;
-      --radius-md: 16px;
-      --max: 1080px;
+      --radius-md: 18px;
+      --max: 1120px;
     }
 
     * {
@@ -47,11 +54,12 @@
       font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(circle at 12% 0%, rgba(255, 255, 255, 0.95) 0, transparent 34%),
-        radial-gradient(circle at 88% 12%, rgba(232, 219, 198, 0.72) 0, transparent 38%),
-        linear-gradient(180deg, #fbf6ee 0%, var(--bg) 48%, #f4ecdf 100%);
+        radial-gradient(circle at 9% 4%, rgba(255,255,255,0.96) 0, transparent 28%),
+        radial-gradient(circle at 91% 13%, rgba(223,232,221,0.72) 0, transparent 34%),
+        linear-gradient(180deg, #faf7f1 0%, var(--bg) 48%, #f0eadf 100%);
       line-height: 1.72;
       word-break: keep-all;
+      -webkit-font-smoothing: antialiased;
     }
 
     a {
@@ -59,9 +67,11 @@
       text-decoration: none;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
     }
 
     .container {
@@ -70,119 +80,206 @@
     }
 
     .narrow {
-      width: min(calc(100% - 40px), 760px);
+      width: min(calc(100% - 40px), 800px);
+      margin: 0 auto;
     }
 
     .skip-link {
       position: absolute;
-      left: -999px;
-      top: 16px;
-      z-index: 99;
+      left: -9999px;
+      top: 12px;
+      z-index: 1000;
       padding: 10px 14px;
       border-radius: 999px;
-      background: var(--ink);
+      background: var(--green-deep);
       color: #fff;
     }
 
     .skip-link:focus {
-      left: 16px;
+      left: 12px;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(54, 63, 52, 0.09);
+      background: rgba(250, 247, 241, 0.78);
+      backdrop-filter: blur(18px);
+    }
+
+    .header-inner {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 850;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 13px 13px 16px 13px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(145deg, var(--green), var(--olive));
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.24);
+    }
+
+    .brand-mark::before,
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.7);
+    }
+
+    .brand-mark::before {
+      width: 14px;
+      height: 22px;
+      left: 8px;
+      bottom: -7px;
+      transform: rotate(28deg);
+    }
+
+    .brand-mark::after {
+      width: 10px;
+      height: 16px;
+      right: 5px;
+      top: 4px;
+      transform: rotate(-22deg);
+      opacity: 0.52;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .header-nav a {
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.93rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      transition: color 160ms ease, background 160ms ease;
+    }
+
+    .header-nav a:hover,
+    .header-nav a:focus-visible {
+      color: var(--green-deep);
+      background: rgba(223,232,221,0.72);
+      outline: none;
     }
 
     .hero {
-      min-height: 88vh;
+      min-height: calc(100vh - 70px);
       display: grid;
       align-items: center;
-      padding: 74px 0 54px;
       position: relative;
       overflow: hidden;
+      padding: 74px 0 70px;
     }
 
     .hero::before,
     .hero::after {
       content: "";
       position: absolute;
-      border-radius: 999px;
-      filter: blur(4px);
-      opacity: 0.5;
+      border-radius: 50%;
       pointer-events: none;
     }
 
     .hero::before {
-      width: 270px;
-      height: 270px;
-      background: rgba(255, 255, 255, 0.72);
-      right: -60px;
-      top: 80px;
+      width: 430px;
+      height: 430px;
+      right: -180px;
+      top: 30px;
+      background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.82), rgba(204,220,202,0.34) 46%, transparent 72%);
     }
 
     .hero::after {
-      width: 340px;
-      height: 340px;
-      background: rgba(219, 199, 169, 0.42);
-      left: -120px;
-      bottom: -100px;
+      width: 520px;
+      height: 520px;
+      left: -230px;
+      bottom: -220px;
+      background: radial-gradient(circle at 58% 42%, rgba(201,175,131,0.25), rgba(255,255,255,0) 68%);
     }
 
     .hero-inner {
       position: relative;
       z-index: 1;
       display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
-      gap: 44px;
+      grid-template-columns: minmax(0, 1.08fr) minmax(330px, 0.92fr);
+      gap: 58px;
       align-items: center;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      margin: 0 0 18px;
+      gap: 9px;
+      margin: 0 0 20px;
       padding: 8px 13px;
       border: 1px solid var(--line);
       border-radius: 999px;
-      color: var(--accent-deep);
-      background: rgba(255, 253, 248, 0.58);
-      font-size: 0.9rem;
-      letter-spacing: -0.01em;
+      background: rgba(255,253,248,0.64);
+      color: var(--green-deep);
+      font-size: 0.89rem;
+      font-weight: 750;
+      letter-spacing: -0.02em;
     }
 
     .eyebrow::before {
       content: "";
-      width: 7px;
-      height: 7px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      background: var(--accent);
+      background: linear-gradient(135deg, var(--green), var(--olive));
+      box-shadow: 0 0 0 5px rgba(68,91,70,0.08);
     }
 
-    .site-title {
+    .hero-title {
       margin: 0;
-      font-size: clamp(2.6rem, 8vw, 6rem);
+      max-width: 720px;
+      font-size: clamp(3rem, 7.5vw, 6.8rem);
       line-height: 0.98;
-      letter-spacing: -0.08em;
-      font-weight: 800;
+      letter-spacing: -0.085em;
+      font-weight: 860;
     }
 
-    .site-title span {
+    .hero-title .small {
       display: block;
+      margin-top: 14px;
+      color: var(--green-deep);
+      font-size: clamp(1.25rem, 2.9vw, 2.55rem);
+      letter-spacing: -0.055em;
+      font-weight: 680;
     }
 
-    .site-title .en {
-      margin-top: 10px;
-      font-size: clamp(1.35rem, 3.2vw, 2.7rem);
-      letter-spacing: -0.05em;
-      color: var(--accent-deep);
-      font-weight: 650;
-    }
-
-    .site-subtitle {
-      max-width: 640px;
-      margin: 26px 0 0;
+    .hero-lead {
+      max-width: 720px;
+      margin: 30px 0 0;
       color: var(--muted);
-      font-size: clamp(1.06rem, 2.2vw, 1.28rem);
-      letter-spacing: -0.03em;
+      font-size: clamp(1.08rem, 2.1vw, 1.32rem);
+      letter-spacing: -0.035em;
     }
 
-    .hero-buttons {
+    .hero-lead strong {
+      color: var(--ink);
+      font-weight: 780;
+    }
+
+    .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
@@ -193,336 +290,668 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
-      padding: 12px 18px;
+      min-height: 50px;
+      padding: 12px 19px;
       border-radius: 999px;
       border: 1px solid transparent;
-      font-weight: 720;
+      font-weight: 780;
       letter-spacing: -0.03em;
-      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease, background 160ms ease;
-      white-space: nowrap;
+      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease, border-color 160ms ease;
     }
 
     .button:hover,
-    .button:focus-visible,
-    .link-card:hover,
-    .link-card:focus-visible,
-    .mini-link:hover,
-    .mini-link:focus-visible {
+    .button:focus-visible {
       transform: translateY(-2px);
-      box-shadow: 0 18px 45px rgba(75, 60, 37, 0.14);
+      box-shadow: 0 16px 38px rgba(45, 51, 42, 0.15);
+      outline: none;
     }
 
     .button-primary {
       color: #fff;
-      background: var(--accent-deep);
-      border-color: var(--accent-deep);
+      background: var(--green-deep);
+      border-color: var(--green-deep);
     }
 
-    .button-outline {
-      color: var(--accent-deep);
-      background: rgba(255, 253, 248, 0.72);
+    .button-secondary {
+      color: var(--green-deep);
+      background: rgba(255,253,248,0.72);
       border-color: var(--line);
     }
 
-    .hero-card {
-      padding: 18px;
+    .life-map {
+      position: relative;
+      min-height: 520px;
+      padding: 24px;
       border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      background: rgba(255, 253, 248, 0.74);
+      border-radius: 38px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.76), rgba(236,240,231,0.62)),
+        var(--paper);
       box-shadow: var(--shadow);
-      backdrop-filter: blur(20px);
-    }
-
-    .hero-card-media {
       overflow: hidden;
-      border-radius: 26px;
-      background: linear-gradient(135deg, #efe1cc, #faf4e9);
-      aspect-ratio: 4 / 3;
     }
 
-    .hero-card-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .life-map::before {
+      content: "";
+      position: absolute;
+      inset: 50% auto auto 50%;
+      width: 290px;
+      height: 290px;
+      transform: translate(-50%, -50%);
+      border: 1px solid rgba(68,91,70,0.12);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 44px rgba(68,91,70,0.035),
+        0 0 0 88px rgba(68,91,70,0.025);
     }
 
-    .hero-card-body {
-      padding: 22px 6px 8px;
-    }
-
-    .card-kicker {
-      margin: 0 0 8px;
-      color: var(--accent);
-      font-size: 0.84rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
+    .life-map-label {
+      position: relative;
+      z-index: 2;
+      margin: 0;
+      color: var(--green-deep);
+      font-size: 0.82rem;
+      font-weight: 850;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
-    .hero-card-title {
-      margin: 0;
-      font-size: 1.28rem;
-      line-height: 1.38;
+    .life-core {
+      position: absolute;
+      z-index: 3;
+      left: 50%;
+      top: 50%;
+      width: 170px;
+      min-height: 170px;
+      transform: translate(-50%, -50%);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 22px;
+      border-radius: 50%;
+      color: #fff;
+      background: linear-gradient(145deg, var(--green-deep), var(--green));
+      box-shadow: 0 24px 60px rgba(47,64,50,0.28);
+    }
+
+    .life-core strong {
+      display: block;
+      font-size: 1.4rem;
+      line-height: 1.2;
+      letter-spacing: -0.06em;
+    }
+
+    .life-core span {
+      display: block;
+      margin-top: 8px;
+      color: rgba(255,255,255,0.76);
+      font-size: 0.86rem;
+      letter-spacing: -0.03em;
+    }
+
+    .orbit-card {
+      position: absolute;
+      z-index: 4;
+      width: 150px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255,253,248,0.9);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .orbit-card strong {
+      display: block;
+      color: var(--green-deep);
+      font-size: 1rem;
       letter-spacing: -0.04em;
     }
 
-    .hero-card-text {
-      margin: 12px 0 0;
+    .orbit-card span {
+      display: block;
+      margin-top: 6px;
       color: var(--muted);
-      font-size: 0.98rem;
-      letter-spacing: -0.02em;
+      font-size: 0.86rem;
+      line-height: 1.5;
+      letter-spacing: -0.025em;
+    }
+
+    .orbit-card.one {
+      right: 28px;
+      top: 70px;
+      transform: rotate(2deg);
+    }
+
+    .orbit-card.two {
+      left: 20px;
+      top: 194px;
+      transform: rotate(-2deg);
+    }
+
+    .orbit-card.three {
+      right: 36px;
+      bottom: 48px;
+      transform: rotate(-1deg);
     }
 
     .section {
-      padding: 88px 0;
+      padding: 94px 0;
     }
 
     .section-alt {
-      background: rgba(255, 253, 248, 0.44);
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
+      background: rgba(255,253,248,0.48);
     }
 
     .section-head {
       display: flex;
       justify-content: space-between;
-      gap: 28px;
       align-items: flex-end;
-      margin-bottom: 30px;
+      gap: 28px;
+      margin-bottom: 34px;
     }
 
     .section-title {
       margin: 0;
-      font-size: clamp(1.9rem, 4vw, 3rem);
-      line-height: 1.12;
-      letter-spacing: -0.065em;
+      font-size: clamp(2rem, 4vw, 3.35rem);
+      line-height: 1.08;
+      letter-spacing: -0.07em;
     }
 
     .section-description {
-      max-width: 560px;
+      max-width: 580px;
       margin: 0;
       color: var(--muted);
-      font-size: 1.02rem;
+      font-size: 1.03rem;
       letter-spacing: -0.03em;
     }
 
-    .story-box {
-      padding: 34px;
+    .about-card {
+      position: relative;
+      overflow: hidden;
+      padding: 44px;
       border: 1px solid var(--line);
       border-radius: var(--radius-xl);
-      background: rgba(255, 253, 248, 0.64);
-      box-shadow: 0 18px 55px rgba(77, 61, 38, 0.08);
+      background: linear-gradient(145deg, rgba(255,253,248,0.92), rgba(240,236,225,0.8));
+      box-shadow: var(--shadow-soft);
     }
 
-    .story-text {
+    .about-card::after {
+      content: "";
+      position: absolute;
+      right: -60px;
+      bottom: -80px;
+      width: 240px;
+      height: 240px;
+      border-radius: 48% 52% 60% 40%;
+      background: rgba(68,91,70,0.065);
+      transform: rotate(18deg);
+    }
+
+    .about-text {
+      position: relative;
+      z-index: 1;
       margin: 0;
       color: var(--muted);
-      font-size: 1.07rem;
+      font-size: 1.09rem;
       letter-spacing: -0.03em;
     }
 
-    .story-text + .story-text {
-      margin-top: 14px;
+    .about-text + .about-text {
+      margin-top: 15px;
     }
 
-    .link-grid {
+    .about-text strong {
+      color: var(--ink);
+    }
+
+    .topic-grid,
+    .daily-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      gap: 17px;
     }
 
-    .link-card {
-      min-height: 220px;
+    .topic-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .topic-card {
+      min-height: 250px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 24px;
+      padding: 25px;
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
       background: var(--paper);
-      box-shadow: 0 16px 42px rgba(77, 61, 38, 0.08);
+      box-shadow: var(--shadow-soft);
       transition: transform 160ms ease, box-shadow 160ms ease;
     }
 
-    .link-card.featured {
-      grid-column: span 3;
-      min-height: 250px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.04fr) minmax(280px, 0.96fr);
-      gap: 26px;
-      align-items: center;
-      padding: 20px;
+    .topic-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 54px rgba(45,51,42,0.12);
     }
 
-    .featured-text {
-      padding: 12px 8px 12px 12px;
+    .topic-number {
+      display: inline-grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      background: var(--green-soft);
+      color: var(--green-deep);
+      font-size: 0.84rem;
+      font-weight: 880;
     }
 
-    .featured-media {
-      overflow: hidden;
-      border-radius: 22px;
-      background: linear-gradient(135deg, var(--accent-soft), #faf3e8);
-      aspect-ratio: 16 / 10;
+    .topic-title {
+      margin: 30px 0 0;
+      font-size: 1.35rem;
+      line-height: 1.25;
+      letter-spacing: -0.055em;
     }
 
-    .featured-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .link-card-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: flex-start;
-    }
-
-    .link-title {
-      margin: 0;
-      font-size: 1.22rem;
-      letter-spacing: -0.045em;
-      line-height: 1.32;
-    }
-
-    .link-description {
-      margin: 12px 0 0;
+    .topic-text {
+      margin: 11px 0 0;
       color: var(--muted);
+      font-size: 0.95rem;
       letter-spacing: -0.03em;
-      font-size: 0.98rem;
     }
 
-    .link-url {
-      margin: 20px 0 0;
-      color: var(--accent);
-      font-weight: 750;
-      font-size: 0.9rem;
+    .topic-tag {
+      margin-top: 24px;
+      color: var(--olive);
+      font-size: 0.83rem;
+      font-weight: 820;
       letter-spacing: -0.02em;
     }
 
-    .icon-badge {
-      width: 44px;
-      height: 44px;
-      flex: 0 0 44px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 16px;
-      background: var(--accent-soft);
-      color: var(--accent-deep);
-      font-weight: 850;
-      font-size: 0.86rem;
+    .daily-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .two-column {
-      display: grid;
-      grid-template-columns: minmax(0, 0.96fr) minmax(0, 1.04fr);
-      gap: 22px;
-      align-items: stretch;
-    }
-
-    .farm-panel {
+    .daily-card {
+      position: relative;
+      min-height: 285px;
       overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      background: var(--paper);
-      box-shadow: 0 16px 42px rgba(77, 61, 38, 0.08);
-    }
-
-    .farm-panel img {
-      width: 100%;
-      height: 100%;
-      min-height: 360px;
-      object-fit: cover;
-    }
-
-    .channel-panel {
       padding: 28px;
       border: 1px solid var(--line);
       border-radius: var(--radius-xl);
       background: var(--paper-solid);
-      box-shadow: 0 16px 42px rgba(77, 61, 38, 0.08);
+      box-shadow: var(--shadow-soft);
     }
 
-    .panel-title {
+    .daily-card::before {
+      content: "";
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      right: -40px;
+      bottom: -45px;
+      border-radius: 46% 54% 62% 38%;
+      opacity: 0.16;
+      transform: rotate(22deg);
+    }
+
+    .daily-card:nth-child(1)::before { background: var(--clay); }
+    .daily-card:nth-child(2)::before { background: var(--green); }
+    .daily-card:nth-child(3)::before { background: var(--sand); }
+
+    .daily-kicker {
       margin: 0;
-      font-size: 1.42rem;
-      line-height: 1.35;
-      letter-spacing: -0.045em;
+      color: var(--green);
+      font-size: 0.8rem;
+      font-weight: 860;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
-    .panel-text {
-      margin: 12px 0 22px;
+    .daily-title {
+      margin: 21px 0 0;
+      font-size: 1.56rem;
+      letter-spacing: -0.06em;
+    }
+
+    .daily-text {
+      margin: 14px 0 0;
       color: var(--muted);
       letter-spacing: -0.03em;
     }
 
-    .mini-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
+    .daily-line {
+      position: absolute;
+      left: 28px;
+      bottom: 26px;
+      width: 58px;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--green), transparent);
     }
 
-    .mini-link {
+    .channel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 17px;
+    }
+
+    .channel-card {
+      min-height: 230px;
       display: flex;
-      min-height: 104px;
       flex-direction: column;
       justify-content: space-between;
-      padding: 18px;
+      padding: 25px;
       border: 1px solid var(--line);
-      border-radius: 20px;
-      background: rgba(247, 242, 234, 0.68);
+      border-radius: var(--radius-lg);
+      background: var(--paper);
+      box-shadow: var(--shadow-soft);
       transition: transform 160ms ease, box-shadow 160ms ease;
     }
 
-    .mini-link strong {
-      display: block;
-      font-size: 1.02rem;
-      letter-spacing: -0.035em;
+    .channel-card:hover,
+    .channel-card:focus-visible {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 54px rgba(45,51,42,0.12);
+      outline: none;
     }
 
-    .mini-link span {
+    .channel-card.featured {
+      grid-column: span 3;
+      min-height: 285px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.16fr) minmax(280px, 0.84fr);
+      gap: 28px;
+      align-items: center;
+      padding: 28px;
+    }
+
+    .channel-icon {
+      display: inline-grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      background: var(--green-soft);
+      color: var(--green-deep);
+      font-size: 0.88rem;
+      font-weight: 880;
+    }
+
+    .channel-title {
+      margin: 20px 0 0;
+      font-size: 1.34rem;
+      letter-spacing: -0.055em;
+    }
+
+    .channel-description {
+      margin: 11px 0 0;
       color: var(--muted);
-      font-size: 0.9rem;
       letter-spacing: -0.03em;
     }
 
-    .footer {
-      padding: 44px 0 50px;
-      border-top: 1px solid var(--line);
+    .channel-url {
+      margin: 24px 0 0;
+      color: var(--green);
+      font-size: 0.9rem;
+      font-weight: 820;
+      letter-spacing: -0.02em;
+    }
+
+    .featured-copy {
+      padding: 6px;
+    }
+
+    .featured-visual {
+      position: relative;
+      min-height: 220px;
+      overflow: hidden;
+      border-radius: 24px;
+      background:
+        linear-gradient(145deg, rgba(47,64,50,0.98), rgba(68,91,70,0.82)),
+        var(--green);
+    }
+
+    .featured-visual::before,
+    .featured-visual::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .featured-visual::before {
+      width: 210px;
+      height: 210px;
+      right: -45px;
+      top: -55px;
+    }
+
+    .featured-visual::after {
+      width: 130px;
+      height: 130px;
+      left: 28px;
+      bottom: -42px;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .featured-quote {
+      position: absolute;
+      z-index: 2;
+      left: 26px;
+      right: 26px;
+      top: 50%;
+      transform: translateY(-50%);
+      margin: 0;
+      color: #fff;
+      font-size: 1.23rem;
+      line-height: 1.5;
+      letter-spacing: -0.045em;
+      font-weight: 740;
+    }
+
+    .archive-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .archive-visual,
+    .archive-copy {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .archive-visual {
+      position: relative;
+      min-height: 390px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 28% 28%, rgba(255,255,255,0.9), transparent 18%),
+        linear-gradient(145deg, #d9d8bb 0%, #b6c3a8 45%, #8f7359 100%);
+    }
+
+    .archive-visual::before {
+      content: "";
+      position: absolute;
+      inset: auto -40px -90px -40px;
+      height: 250px;
+      border-radius: 50% 50% 0 0;
+      background: rgba(63,83,58,0.32);
+      transform: rotate(-5deg);
+    }
+
+    .archive-visual::after {
+      content: "지난 시간";
+      position: absolute;
+      left: 24px;
+      bottom: 22px;
+      color: rgba(255,255,255,0.9);
+      font-weight: 820;
+      letter-spacing: -0.03em;
+    }
+
+    .archive-copy {
+      padding: 34px;
+      background: var(--paper-solid);
+    }
+
+    .archive-copy h3 {
+      margin: 0;
+      font-size: 1.7rem;
+      line-height: 1.3;
+      letter-spacing: -0.06em;
+    }
+
+    .archive-copy p {
+      margin: 16px 0 0;
       color: var(--muted);
+      letter-spacing: -0.03em;
+    }
+
+    .archive-note {
+      margin-top: 26px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(223,232,221,0.52);
+      color: var(--green-deep);
+      font-size: 0.94rem;
+      letter-spacing: -0.025em;
+    }
+
+    .closing {
+      padding: 82px 0;
+    }
+
+    .closing-card {
+      position: relative;
+      overflow: hidden;
+      padding: 50px 42px;
+      border-radius: 38px;
+      color: #fff;
+      background: linear-gradient(145deg, var(--green-deep), #506950);
+      box-shadow: 0 28px 80px rgba(47,64,50,0.24);
+    }
+
+    .closing-card::before,
+    .closing-card::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .closing-card::before {
+      width: 230px;
+      height: 230px;
+      right: -80px;
+      top: -110px;
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .closing-card::after {
+      width: 150px;
+      height: 150px;
+      right: 70px;
+      bottom: -90px;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .closing-title,
+    .closing-text,
+    .closing-actions {
+      position: relative;
+      z-index: 1;
+    }
+
+    .closing-title {
+      max-width: 730px;
+      margin: 0;
+      font-size: clamp(2rem, 4.5vw, 3.8rem);
+      line-height: 1.14;
+      letter-spacing: -0.075em;
+    }
+
+    .closing-text {
+      max-width: 680px;
+      margin: 20px 0 0;
+      color: rgba(255,255,255,0.74);
+      letter-spacing: -0.03em;
+    }
+
+    .closing-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button-light {
+      color: var(--green-deep);
+      background: #fff;
+      border-color: #fff;
+    }
+
+    .button-ghost {
+      color: #fff;
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.24);
+    }
+
+    .footer {
+      padding: 42px 0 48px;
+      border-top: 1px solid var(--line);
+      background: rgba(255,253,248,0.6);
       text-align: center;
-      background: rgba(255, 253, 248, 0.56);
     }
 
     .footer-title {
       margin: 0;
-      color: var(--ink);
-      font-weight: 800;
-      letter-spacing: -0.035em;
+      font-weight: 850;
+      letter-spacing: -0.04em;
     }
 
     .footer-text {
       margin: 7px 0 0;
-      font-size: 0.94rem;
-      letter-spacing: -0.02em;
+      color: var(--muted);
+      font-size: 0.93rem;
+      letter-spacing: -0.025em;
     }
 
-    @media (max-width: 860px) {
-      .hero {
-        min-height: auto;
-        padding-top: 54px;
-      }
-
+    @media (max-width: 980px) {
       .hero-inner,
-      .two-column,
-      .link-card.featured {
+      .archive-wrap,
+      .channel-card.featured {
         grid-template-columns: 1fr;
       }
 
-      .hero-card {
-        order: -1;
+      .life-map {
+        min-height: 470px;
+      }
+
+      .topic-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .channel-card.featured {
+        grid-column: span 3;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .header-nav {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 58px;
+      }
+
+      .hero-inner {
+        gap: 38px;
       }
 
       .section-head {
@@ -530,15 +959,21 @@
       }
 
       .section-description {
-        margin-top: 12px;
+        margin-top: 13px;
       }
 
-      .link-grid {
+      .daily-grid,
+      .channel-grid {
         grid-template-columns: 1fr;
       }
 
-      .link-card.featured {
+      .channel-card.featured {
         grid-column: span 1;
+      }
+
+      .about-card,
+      .closing-card {
+        padding: 34px 28px;
       }
     }
 
@@ -548,8 +983,12 @@
         width: min(calc(100% - 28px), var(--max));
       }
 
-      .hero-buttons,
-      .mini-grid {
+      .hero-title {
+        font-size: clamp(3rem, 15vw, 4.6rem);
+      }
+
+      .hero-actions,
+      .closing-actions {
         display: grid;
         grid-template-columns: 1fr;
       }
@@ -558,21 +997,64 @@
         width: 100%;
       }
 
+      .life-map {
+        min-height: 430px;
+        padding: 20px;
+      }
+
+      .life-core {
+        width: 145px;
+        min-height: 145px;
+      }
+
+      .orbit-card {
+        width: 132px;
+        padding: 13px;
+      }
+
+      .orbit-card.one {
+        right: 14px;
+        top: 58px;
+      }
+
+      .orbit-card.two {
+        left: 10px;
+        top: 180px;
+      }
+
+      .orbit-card.three {
+        right: 16px;
+        bottom: 36px;
+      }
+
       .section {
-        padding: 64px 0;
+        padding: 68px 0;
       }
 
-      .story-box,
-      .channel-panel {
-        padding: 24px;
+      .topic-grid {
+        grid-template-columns: 1fr;
       }
 
-      .link-card {
-        min-height: 190px;
+      .topic-card {
+        min-height: 220px;
       }
 
-      .farm-panel img {
-        min-height: 260px;
+      .archive-visual {
+        min-height: 290px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
@@ -580,165 +1062,183 @@
 <body>
   <a class="skip-link" href="#main">본문으로 바로가기</a>
 
-  <header class="hero" id="top">
-    <div class="container hero-inner">
-      <div class="hero-copy">
-        <p class="eyebrow">회복과 삶의 기록</p>
-        <h1 class="site-title">
-          <span>함께</span>
-          <span>회복 중</span>
-          <span class="en">withrecovering</span>
-        </h1>
-        <p class="site-subtitle">
-          제주 농원에서 살아가며 회복, 삶, 감각, 계절의 기록을 남깁니다.
-          민우의 글과 소식을 한곳에 모았습니다.
-        </p>
-        <nav class="hero-buttons" aria-label="주요 채널">
-          <a class="button button-primary" href="https://brunch.co.kr/@withrecovering" target="_blank" rel="noopener noreferrer">브런치 읽기</a>
-          <a class="button button-outline" href="https://www.instagram.com/withrecovering/" target="_blank" rel="noopener noreferrer">인스타그램</a>
-          <a class="button button-outline" href="https://www.threads.com/@withrecovering" target="_blank" rel="noopener noreferrer">쓰레드</a>
-          <a class="button button-outline" href="http://pf.kakao.com/_xfcxdqX" target="_blank" rel="noopener noreferrer">문의하기</a>
-        </nav>
-      </div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="함께 회복 중 홈으로 이동">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>함께 회복 중</span>
+      </a>
 
-      <aside class="hero-card" aria-label="withrecovering 소개">
-        <div class="hero-card-media">
-          <img src="brunch-cover.jpg" alt="함께 회복 중 withrecovering 대표 이미지" />
-        </div>
-        <div class="hero-card-body">
-          <p class="card-kicker">Archive & Social</p>
-          <h2 class="hero-card-title">긴 글은 브런치에, 짧은 소식은 SNS에 남깁니다.</h2>
-          <p class="hero-card-text">읽고, 이어지고, 필요할 때 농원과 구매 채널로 연결되는 작은 입구입니다.</p>
-        </div>
-      </aside>
+      <nav class="header-nav" aria-label="주요 메뉴">
+        <a href="#about">소개</a>
+        <a href="#themes">기록의 주제</a>
+        <a href="#daily">지금의 생활</a>
+        <a href="#channels">채널</a>
+      </nav>
     </div>
   </header>
 
   <main id="main">
-    <section class="section" id="story">
-      <div class="container narrow">
-        <div class="story-box">
+    <section class="hero" id="top">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">노동 · 공동체 · 관계 · 회복</p>
+          <h1 class="hero-title">
+            함께<br />회복 중
+            <span class="small">withrecovering</span>
+          </h1>
+
+          <p class="hero-lead">
+            <strong>노동과 공동체 속에서 관계를 통해 회복을 배우고 연습하며,</strong>
+            실천하는 삶을 기록합니다.
+          </p>
+
+          <div class="hero-actions" aria-label="주요 채널 바로가기">
+            <a class="button button-primary" href="https://brunch.co.kr/@withrecovering" target="_blank" rel="noopener noreferrer">브런치에서 읽기</a>
+            <a class="button button-secondary" href="https://www.instagram.com/withrecovering/" target="_blank" rel="noopener noreferrer">인스타그램 보기</a>
+            <a class="button button-secondary" href="#about">이 공간 알아보기</a>
+          </div>
+        </div>
+
+        <aside class="life-map" aria-label="현재의 삶을 이루는 세 가지 움직임">
+          <p class="life-map-label">A life in practice</p>
+
+          <div class="life-core">
+            <div>
+              <strong>회복은<br />삶의 연습</strong>
+              <span>완성보다 지속</span>
+            </div>
+          </div>
+
+          <div class="orbit-card one">
+            <strong>일합니다</strong>
+            <span>몸을 움직이며 하루의 리듬을 만듭니다.</span>
+          </div>
+
+          <div class="orbit-card two">
+            <strong>함께 삽니다</strong>
+            <span>관계 속에서 부딪히고 다시 마주합니다.</span>
+          </div>
+
+          <div class="orbit-card three">
+            <strong>기록합니다</strong>
+            <span>삶에서 건져 올린 감각과 질문을 남깁니다.</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="narrow">
+        <div class="about-card">
           <p class="eyebrow">About</p>
-          <h2 class="section-title">민우의 기록</h2>
-          <p class="story-text">안녕하세요. 민우입니다.</p>
-          <p class="story-text">
-            이곳은 제가 남겨온 글과 삶의 기록, 그리고 신평곶자왈농원과의 연결을 모아두는 허브입니다.
+          <h2 class="section-title">지금의 민우</h2>
+
+          <p class="about-text">안녕하세요. 민우입니다.</p>
+          <p class="about-text">
+            지금은 <strong>공동체 안에서 생활하며 패스트푸드 주방에서 일하고 있습니다.</strong>
+            사람들과 함께 살고, 정해진 시간에 일하고, 관계 속에서 부딪히고 다시 마주하는 일을 통해
+            회복이 생각이나 감정만의 문제가 아니라 생활 속에서 반복해서 배우는 움직임이라는 것을 알아가고 있습니다.
           </p>
-          <p class="story-text">
-            누가 보든 보지 않든, 나에게 오래 남는 문장을 조용히 아카이빙하고 싶어 이 공간을 만들고 있습니다.
+          <p class="about-text">
+            이곳에는 그 과정에서 만난 장면과 질문, 무너지지 않는 하루를 만들기 위해 스스로에게 건넨 문장,
+            그리고 조금씩 다시 살아가는 감각을 기록합니다.
           </p>
         </div>
       </div>
     </section>
 
-    <section class="section section-alt" id="reading">
+    <section class="section section-alt" id="themes">
       <div class="container">
         <div class="section-head">
-          <h2 class="section-title">읽고 이어지는 곳</h2>
-          <p class="section-description">
-            withrecovering의 중심은 기록입니다. 긴 글은 브런치에, 이미지와 짧은 생각은 SNS에 나눕니다.
-          </p>
-        </div>
-
-        <div class="link-grid">
-          <a class="link-card featured" href="https://brunch.co.kr/@withrecovering" target="_blank" rel="noopener noreferrer">
-            <div class="featured-text">
-              <p class="card-kicker">Main Archive</p>
-              <div class="link-card-top">
-                <div>
-                  <h3 class="link-title">브런치</h3>
-                  <p class="link-description">
-                    회복과 삶에 대한 긴 글을 가장 먼저 남기는 본진입니다.
-                    제주 농원에서 살아가며 적어두는 기록들을 이곳에서 읽을 수 있습니다.
-                  </p>
-                  <p class="link-url">brunch.co.kr/@withrecovering</p>
-                </div>
-                <span class="icon-badge" aria-hidden="true">Br</span>
-              </div>
-            </div>
-            <div class="featured-media">
-              <img src="brunch-cover.jpg" alt="민우의 브런치 대표 이미지" />
-            </div>
-          </a>
-
-          <a class="link-card" href="https://www.instagram.com/withrecovering/" target="_blank" rel="noopener noreferrer">
-            <div>
-              <div class="link-card-top">
-                <h3 class="link-title">인스타그램</h3>
-                <span class="icon-badge" aria-hidden="true">IG</span>
-              </div>
-              <p class="link-description">카드레터, 일상의 장면, 회복의 문장을 이미지로 남깁니다.</p>
-            </div>
-            <p class="link-url">instagram.com/withrecovering</p>
-          </a>
-
-          <a class="link-card" href="https://www.threads.com/@withrecovering" target="_blank" rel="noopener noreferrer">
-            <div>
-              <div class="link-card-top">
-                <h3 class="link-title">쓰레드</h3>
-                <span class="icon-badge" aria-hidden="true">Th</span>
-              </div>
-              <p class="link-description">짧은 생각, 회복 문장, 글이 되기 전의 감각을 나눕니다.</p>
-            </div>
-            <p class="link-url">threads.com/@withrecovering</p>
-          </a>
-
-          <a class="link-card" href="https://www.facebook.com/withrecovering" target="_blank" rel="noopener noreferrer">
-            <div>
-              <div class="link-card-top">
-                <h3 class="link-title">페이스북</h3>
-                <span class="icon-badge" aria-hidden="true">Fb</span>
-              </div>
-              <p class="link-description">글 공유, 소식, 조금 더 긴 이야기를 함께 남깁니다.</p>
-            </div>
-            <p class="link-url">facebook.com/withrecovering</p>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="farm">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="section-title">농원과 계절의 연결</h2>
-          <p class="section-description">
-            신평곶자왈농원은 제가 살아가는 실제 공간이자 글의 배경이 되는 장소입니다.
-            방문 정보, 문의, 구매 채널은 아래에서 확인하실 수 있습니다.
-          </p>
-        </div>
-
-        <div class="two-column">
-          <div class="farm-panel">
-            <img src="farm-photo.jpg" alt="신평곶자왈농원 사진" />
+          <div>
+            <p class="eyebrow">What I write</p>
+            <h2 class="section-title">기록의 네 가지 주제</h2>
           </div>
+          <p class="section-description">
+            회복을 개인의 마음속에만 두지 않고, 몸과 일, 관계와 생활의 층위에서 오래 바라봅니다.
+          </p>
+        </div>
 
-          <div class="channel-panel">
-            <p class="card-kicker">Farm & Store</p>
-            <h3 class="panel-title">감귤, 농원, 문의가 필요할 때</h3>
-            <p class="panel-text">
-              위치와 리뷰는 스마트플레이스에서, 문의는 카카오채널에서,
-              구매는 스마트스토어와 톡스토어에서 확인하실 수 있습니다.
+        <div class="topic-grid">
+          <article class="topic-card">
+            <div>
+              <span class="topic-number">01</span>
+              <h3 class="topic-title">노동</h3>
+              <p class="topic-text">생계를 위해 몸을 움직이고, 일을 익히며, 하루의 리듬을 만들어가는 경험을 기록합니다.</p>
+            </div>
+            <span class="topic-tag">몸 · 리듬 · 생존</span>
+          </article>
+
+          <article class="topic-card">
+            <div>
+              <span class="topic-number">02</span>
+              <h3 class="topic-title">공동체</h3>
+              <p class="topic-text">함께 살며 마주하는 친밀감, 갈등, 부러움, 소속감과 관계의 역동을 살펴봅니다.</p>
+            </div>
+            <span class="topic-tag">함께 삶 · 갈등 · 연결</span>
+          </article>
+
+          <article class="topic-card">
+            <div>
+              <span class="topic-number">03</span>
+              <h3 class="topic-title">회복</h3>
+              <p class="topic-text">무너지지 않는 하루와 다시 움직이기 위해 반복하는 작고 구체적인 연습을 남깁니다.</p>
+            </div>
+            <span class="topic-tag">지속 · 연습 · 움직임</span>
+          </article>
+
+          <article class="topic-card">
+            <div>
+              <span class="topic-number">04</span>
+              <h3 class="topic-title">감각과 성찰</h3>
+              <p class="topic-text">몸과 마음의 신호를 알아차리고, 아직 이름 붙지 않은 경험에 천천히 언어를 건넵니다.</p>
+            </div>
+            <span class="topic-tag">알아차림 · 언어 · 관조</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="daily">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">A living practice</p>
+            <h2 class="section-title">지금 살아가는 방식</h2>
+          </div>
+          <p class="section-description">
+            회복은 멈춰 쉬는 일만이 아니라, 다시 일하고 함께 살아보는 연습이기도 합니다.
+          </p>
+        </div>
+
+        <div class="daily-grid">
+          <article class="daily-card">
+            <p class="daily-kicker">Work</p>
+            <h3 class="daily-title">일합니다</h3>
+            <p class="daily-text">
+              정해진 시간에 출근해 몸을 움직이고, 맡은 일을 익히며 생활의 리듬을 다시 세웁니다.
             </p>
+            <span class="daily-line" aria-hidden="true"></span>
+          </article>
 
-            <div class="mini-grid" aria-label="농원 및 구매 채널">
-              <a class="mini-link" href="https://map.naver.com/p/entry/place/2051591949" target="_blank" rel="noopener noreferrer">
-                <strong>스마트플레이스</strong>
-                <span>위치·정보·리뷰 보기</span>
-              </a>
-              <a class="mini-link" href="http://pf.kakao.com/_xfcxdqX" target="_blank" rel="noopener noreferrer">
-                <strong>카카오채널</strong>
-                <span>문의하고 소식 받기</span>
-              </a>
-              <a class="mini-link" href="https://smartstore.naver.com/withrecovering" target="_blank" rel="noopener noreferrer">
-                <strong>스마트스토어</strong>
-                <span>네이버에서 구매하기</span>
-              </a>
-              <a class="mini-link" href="https://store.kakao.com/withrecovering" target="_blank" rel="noopener noreferrer">
-                <strong>톡스토어</strong>
-                <span>카카오에서 구매하기</span>
-              </a>
-            </div>
-          </div>
+          <article class="daily-card">
+            <p class="daily-kicker">Community</p>
+            <h3 class="daily-title">함께 삽니다</h3>
+            <p class="daily-text">
+              공동체 안에서 다른 사람들과 생활하며, 관계의 따뜻함과 불편함을 함께 배웁니다.
+            </p>
+            <span class="daily-line" aria-hidden="true"></span>
+          </article>
+
+          <article class="daily-card">
+            <p class="daily-kicker">Archive</p>
+            <h3 class="daily-title">기록합니다</h3>
+            <p class="daily-text">
+              그 과정에서 일어나는 감정과 질문, 작지만 오래 남는 순간을 글과 이미지로 옮깁니다.
+            </p>
+            <span class="daily-line" aria-hidden="true"></span>
+          </article>
         </div>
       </div>
     </section>
@@ -746,45 +1246,97 @@
     <section class="section section-alt" id="channels">
       <div class="container">
         <div class="section-head">
-          <h2 class="section-title">전체 채널</h2>
+          <div>
+            <p class="eyebrow">Archive & Social</p>
+            <h2 class="section-title">읽고 이어지는 곳</h2>
+          </div>
           <p class="section-description">
-            지금은 브런치와 SNS 연결을 중심으로, 필요한 채널만 단정하게 남겼습니다.
+            긴 호흡의 기록은 브런치에, 이미지와 짧은 생각은 각 SNS에 나눕니다.
           </p>
         </div>
 
-        <div class="mini-grid" aria-label="전체 채널 링크">
-          <a class="mini-link" href="https://brunch.co.kr/@withrecovering" target="_blank" rel="noopener noreferrer">
-            <strong>브런치</strong>
-            <span>긴 글과 원문 아카이브</span>
+        <div class="channel-grid">
+          <a class="channel-card featured" href="https://brunch.co.kr/@withrecovering" target="_blank" rel="noopener noreferrer">
+            <div class="featured-copy">
+              <span class="channel-icon" aria-hidden="true">Br</span>
+              <h3 class="channel-title">브런치</h3>
+              <p class="channel-description">
+                노동과 공동체, 관계와 회복에 관한 경험을 긴 호흡으로 기록하는 중심 아카이브입니다.
+              </p>
+              <p class="channel-url">brunch.co.kr/@withrecovering</p>
+            </div>
+
+            <div class="featured-visual" aria-hidden="true">
+              <p class="featured-quote">완성된 사람이 아니라,<br />계속 살아보는 사람의 기록.</p>
+            </div>
           </a>
-          <a class="mini-link" href="https://www.instagram.com/withrecovering/" target="_blank" rel="noopener noreferrer">
-            <strong>인스타그램</strong>
-            <span>카드레터와 일상 기록</span>
+
+          <a class="channel-card" href="https://www.instagram.com/withrecovering/" target="_blank" rel="noopener noreferrer">
+            <div>
+              <span class="channel-icon" aria-hidden="true">IG</span>
+              <h3 class="channel-title">인스타그램</h3>
+              <p class="channel-description">회복의 문장과 일상의 장면을 카드레터와 이미지로 남깁니다.</p>
+            </div>
+            <p class="channel-url">instagram.com/withrecovering</p>
           </a>
-          <a class="mini-link" href="https://www.threads.com/@withrecovering" target="_blank" rel="noopener noreferrer">
-            <strong>쓰레드</strong>
-            <span>짧은 생각과 근황</span>
+
+          <a class="channel-card" href="https://www.threads.com/@withrecovering" target="_blank" rel="noopener noreferrer">
+            <div>
+              <span class="channel-icon" aria-hidden="true">Th</span>
+              <h3 class="channel-title">쓰레드</h3>
+              <p class="channel-description">글이 되기 전의 질문, 짧은 생각과 하루의 감각을 나눕니다.</p>
+            </div>
+            <p class="channel-url">threads.com/@withrecovering</p>
           </a>
-          <a class="mini-link" href="https://www.facebook.com/withrecovering" target="_blank" rel="noopener noreferrer">
-            <strong>페이스북</strong>
-            <span>글 공유와 소식</span>
+
+          <a class="channel-card" href="https://www.facebook.com/withrecovering" target="_blank" rel="noopener noreferrer">
+            <div>
+              <span class="channel-icon" aria-hidden="true">Fb</span>
+              <h3 class="channel-title">페이스북</h3>
+              <p class="channel-description">새로운 글과 활동 소식, 조금 더 긴 이야기를 함께 공유합니다.</p>
+            </div>
+            <p class="channel-url">facebook.com/withrecovering</p>
           </a>
-          <a class="mini-link" href="http://pf.kakao.com/_xfcxdqX" target="_blank" rel="noopener noreferrer">
-            <strong>카카오채널</strong>
-            <span>문의와 공지</span>
-          </a>
-          <a class="mini-link" href="https://map.naver.com/p/entry/place/2051591949" target="_blank" rel="noopener noreferrer">
-            <strong>스마트플레이스</strong>
-            <span>농원 정보와 리뷰</span>
-          </a>
-          <a class="mini-link" href="https://smartstore.naver.com/withrecovering" target="_blank" rel="noopener noreferrer">
-            <strong>스마트스토어</strong>
-            <span>네이버 구매</span>
-          </a>
-          <a class="mini-link" href="https://store.kakao.com/withrecovering" target="_blank" rel="noopener noreferrer">
-            <strong>톡스토어</strong>
-            <span>카카오 구매</span>
-          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="past">
+      <div class="container">
+        <div class="archive-wrap">
+          <div class="archive-visual" role="img" aria-label="제주 농원에서 보낸 지난 시간을 상징하는 추상 풍경"></div>
+
+          <div class="archive-copy">
+            <p class="eyebrow">Previous chapter</p>
+            <h3>제주 농원에서 보낸 시간도<br />회복의 한 장면으로 남아 있습니다.</h3>
+            <p>
+              곶자왈과 감귤밭에서 조용히 나를 돌보던 시간은 지금의 삶과 단절된 과거가 아닙니다.
+              혼자 회복을 바라보던 시기에서, 이제는 노동과 공동체 속에서 회복을 실천하는 시기로 이동하고 있습니다.
+            </p>
+            <p>
+              이곳은 이전의 정체성을 지우기보다, 그 시간 위에서 새롭게 살아가는 과정을 함께 기록합니다.
+            </p>
+
+            <div class="archive-note">
+              농원과 판매 채널은 현재 메인 랜딩페이지에서 분리했습니다. 필요해질 때 별도의 아카이브 페이지로 다시 연결할 수 있습니다.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="container">
+        <div class="closing-card">
+          <h2 class="closing-title">잘 사는 삶보다,<br />무너지지 않는 하루를 오래 기록합니다.</h2>
+          <p class="closing-text">
+            완성된 회복을 말하기보다, 오늘의 노동과 관계 안에서 다시 배우고 움직이는 과정을 남기겠습니다.
+          </p>
+
+          <div class="closing-actions">
+            <a class="button button-light" href="https://brunch.co.kr/@withrecovering" target="_blank" rel="noopener noreferrer">가장 최근 글 읽기</a>
+            <a class="button button-ghost" href="http://pf.kakao.com/_xfcxdqX" target="_blank" rel="noopener noreferrer">카카오채널로 문의하기</a>
+          </div>
         </div>
       </div>
     </section>
@@ -793,7 +1345,7 @@
   <footer class="footer">
     <div class="container narrow">
       <p class="footer-title">함께 회복 중 withrecovering</p>
-      <p class="footer-text">© 신평곶자왈농원 | 제주에서 기록합니다.</p>
+      <p class="footer-text">© withrecovering · 노동과 공동체 속에서 기록합니다.</p>
     </div>
   </footer>
 </body>
