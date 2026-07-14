@@ -269,6 +269,7 @@
 
     .hero-visual {
       position: relative;
+      isolation: isolate;
       min-height: 430px;
       overflow: hidden;
       border: 1px solid var(--line);
@@ -283,7 +284,9 @@
     .hero-visual::after {
       content: "";
       position: absolute;
+      z-index: 0;
       border-radius: 50%;
+      pointer-events: none;
     }
 
     .hero-visual::before {
@@ -304,6 +307,7 @@
 
     .visual-path {
       position: absolute;
+      z-index: 1;
       inset: 24px;
       border: 1px dashed rgba(53, 86, 63, 0.20);
       border-radius: 50% 45% 52% 44%;
@@ -312,6 +316,7 @@
 
     .visual-center {
       position: absolute;
+      z-index: 3;
       inset: 50% auto auto 50%;
       width: 160px;
       height: 160px;
@@ -343,6 +348,7 @@
 
     .visual-note {
       position: absolute;
+      z-index: 4;
       max-width: 180px;
       padding: 13px 15px;
       border: 1px solid var(--line);
@@ -412,7 +418,7 @@
 
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
     }
 
@@ -435,10 +441,6 @@
       transform: translateY(-4px);
       border-color: rgba(53, 86, 63, 0.25);
       box-shadow: 0 20px 45px rgba(50, 57, 42, 0.10);
-    }
-
-    .channel-card:first-child {
-      grid-column: span 2;
     }
 
     .card-top {
@@ -504,18 +506,17 @@
     }
 
     .farm-intro {
-      display: grid;
-      grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
-      gap: 22px;
       margin-bottom: 22px;
     }
 
-    .farm-story,
-    .farm-purpose {
-      padding: 30px;
+    .farm-story {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 34px;
+      align-items: end;
+      padding: 34px;
       border: 1px solid var(--line);
       border-radius: var(--radius-xl);
-      background: var(--surface);
       box-shadow: 0 14px 38px rgba(50, 57, 42, 0.055);
     }
 
@@ -561,34 +562,6 @@
       max-width: 480px;
       margin: 18px 0 0;
       color: rgba(255, 255, 255, 0.74);
-      letter-spacing: -0.03em;
-    }
-
-    .farm-purpose h3 {
-      margin: 0;
-      font-size: 1.35rem;
-      letter-spacing: -0.045em;
-    }
-
-    .farm-purpose p {
-      margin: 13px 0 0;
-      color: var(--muted);
-      letter-spacing: -0.03em;
-    }
-
-    .farm-purpose-list {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .purpose-item {
-      padding: 13px 14px;
-      border-radius: var(--radius-md);
-      background: var(--surface-soft);
-      font-size: 0.9rem;
-      font-weight: 740;
       letter-spacing: -0.03em;
     }
 
@@ -676,8 +649,8 @@
 
     @media (max-width: 900px) {
       .hero-inner,
-      .farm-intro,
-      .about-box {
+      .about-box,
+      .farm-story {
         grid-template-columns: 1fr;
       }
 
@@ -692,10 +665,6 @@
       .card-grid,
       .farm-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .channel-card:first-child {
-        grid-column: span 2;
       }
     }
 
@@ -776,23 +745,14 @@
         grid-template-columns: 1fr;
       }
 
-      .channel-card:first-child {
-        grid-column: span 1;
-      }
-
       .channel-card,
       .farm-card {
         min-height: 184px;
       }
 
       .farm-story,
-      .farm-purpose,
       .about-box {
         padding: 24px;
-      }
-
-      .farm-purpose-list {
-        grid-template-columns: 1fr;
       }
 
       .footer-inner {
@@ -881,7 +841,7 @@
             <h2 class="section-title">읽고 이어지는 곳</h2>
           </div>
           <p class="section-description">
-            긴 글부터 짧은 문장과 이미지까지, 채널마다 다른 호흡으로 회복과 관계의 이야기를 나눕니다.
+            긴 글은 브런치에, 카드레터와 일상의 장면은 인스타그램에 기록합니다.
           </p>
         </div>
 
@@ -916,27 +876,6 @@
             <span class="card-link">이미지 기록 보기</span>
           </a>
 
-          <a class="channel-card" href="https://www.threads.com/@withrecovering" target="_blank" rel="noopener noreferrer">
-            <div>
-              <div class="card-top">
-                <h3 class="card-title">쓰레드</h3>
-                <span class="card-icon" aria-hidden="true">Th</span>
-              </div>
-              <p class="card-text">글이 되기 전의 짧은 생각과 지금의 감각을 가볍게 남깁니다.</p>
-            </div>
-            <span class="card-link">짧은 글 보기</span>
-          </a>
-
-          <a class="channel-card" href="https://www.facebook.com/withrecovering" target="_blank" rel="noopener noreferrer">
-            <div>
-              <div class="card-top">
-                <h3 class="card-title">페이스북</h3>
-                <span class="card-icon" aria-hidden="true">Fb</span>
-              </div>
-              <p class="card-text">새 글과 활동 소식을 공유하고 조금 더 긴 이야기를 이어갑니다.</p>
-            </div>
-            <span class="card-link">소식 보기</span>
-          </a>
         </div>
       </div>
     </section>
@@ -955,24 +894,13 @@
 
         <div class="farm-intro">
           <article class="farm-story">
-            <p class="eyebrow">The Beginning</p>
-            <h3 class="farm-story-title">곶자왈의 농원에서<br />감귤을 키우며 시작했습니다.</h3>
+            <div>
+              <p class="eyebrow">The Beginning</p>
+              <h3 class="farm-story-title">곶자왈의 농원에서<br />감귤을 키우며 시작했습니다.</h3>
+            </div>
             <p class="farm-story-text">
               계절을 지나며 회복과 삶의 문장을 기록했던 시간이 지금의 ‘함께 회복 중’으로 이어졌습니다. 삶의 자리는 달라져도 농원과 감귤의 연결은 계속됩니다.
             </p>
-          </article>
-
-          <article class="farm-purpose">
-            <h3>찾으시는 목적에 맞는 채널을 선택하세요.</h3>
-            <p>
-              농원 위치와 리뷰, 감귤 문의, 네이버 또는 카카오 구매까지 필요한 기능을 바로 찾을 수 있도록 나누었습니다.
-            </p>
-            <div class="farm-purpose-list" aria-label="농원 채널 기능 요약">
-              <div class="purpose-item">위치·정보·리뷰 확인</div>
-              <div class="purpose-item">감귤과 농원 문의</div>
-              <div class="purpose-item">네이버에서 구매</div>
-              <div class="purpose-item">카카오에서 구매</div>
-            </div>
           </article>
         </div>
 
